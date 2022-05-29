@@ -16,19 +16,17 @@ model Advertiser {
 }
 
 model Campaign {
-  id              BigInt        @id @default(autoincrement())
-  originId        Int           @unique
-  name            String        @db.VarChar(255)
-  friendlyName    String        @db.VarChar(255)
-  contractStart   String?       @db.VarChar(255)
-  contractEnd     String?       @db.VarChar(255)
-  impressionsGoal Int?
-  timezone        String?       @db.VarChar(255)
-  spendRate       Decimal       @default(0)
-  spendType       SpendType     @default(Hide)
-  type            AnalyticsType
-  advertiserId    BigInt?
-  advertiser      Advertiser?   @relation(fields: [advertiserId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_campaign_advertiser")
+  id            BigInt        @id @default(autoincrement())
+  originId      Int           @unique
+  name          String        @db.VarChar(255)
+  friendlyName  String        @db.VarChar(255)
+  contractStart String?       @db.VarChar(255)
+  contractEnd   String?       @db.VarChar(255)
+  spendRate     Decimal       @default(0)
+  spendType     SpendType     @default(Hide)
+  type          AnalyticsType
+  advertiserId  BigInt
+  advertiser    Advertiser    @relation(fields: [advertiserId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_campaign_advertiser")
 
   @@index([advertiserId], map: "FK_campaign_advertiser")
 }
@@ -39,70 +37,33 @@ enum SpendType {
 }
 
 enum AnalyticsType {
-  AMAZONOTT
   AUDIO
-  BROADCAST
   BROADSTREET
-  CALLTRACKING
   DISPLAY
-  FBINSIGHTS
-  GA
-  GAMDISPLAY
-  GAMVIDEO
-  GOOGLESEARCH
-  GOOGLEVIDEO
   OTT
   PREROLL
-  SEM
-  SIMPGEOFENCE
-  SITEIMPACT
   SOCIAL
   VIDEO
 }
 
 model broadstreet_performance_campaign {
-  campaign_id  BigInt
-  date         DateTime @db.Date()
-  network_id   BigInt?
-  views        BigInt?
-  hovers       BigInt?
-  clicks       BigInt?
-  ctr          Float?   @db.Double
-  total_views  BigInt?
-  total_hovers BigInt?
-  total_clicks BigInt?
-  total_ctr    Float?   @db.Double
+  campaign_id BigInt
+  date        DateTime @db.Date()
+  views       BigInt?
+  hovers      BigInt?
+  clicks      BigInt?
 
   @@id([campaign_id, date])
 }
 
 model broadstreet_performance_creatives {
-  date                DateTime  @db.Date()
-  campaign_id         BigInt
-  creative_name       String    @db.VarChar(255)
-  creative_id         BigInt
-  creative_start_date DateTime? @db.Date()
-  views               BigInt?
-  hovers              BigInt?
-  clicks              BigInt?
-  ctr                 Float?    @db.Double
-  total_views         BigInt?
-  total_hovers        BigInt?
-  total_clicks        BigInt?
-  total_ctr           Float?    @db.Double
+  date          DateTime @db.Date()
+  campaign_id   BigInt
+  creative_name String   @db.VarChar(255)
+  creative_id   BigInt
+  views         BigInt?
+  hovers        BigInt?
+  clicks        BigInt?
 
   @@id([campaign_id, date, creative_id])
-}
-
-model broadstreet_static_campaign_info {
-  network_id      BigInt
-  network_name    String?   @db.VarChar(255)
-  advertiser_id   BigInt
-  advertiser_name String?   @db.VarChar(255)
-  campaign_name   String?   @db.VarChar(255)
-  campaign_id     BigInt
-  campaign_start  DateTime? @db.Date()
-  campaign_end    DateTime? @db.Date()
-
-  @@id([network_id, advertiser_id, campaign_id])
 }
