@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BroadstreetController getBroadstreet 1`] = `
+Object {
+  "ByDateImpression": Array [
+    Object {
+      "AnalyticsType": "BROADSTREET",
+      "CTR": "10.00%",
+      "Clicks": 1,
+      "Date": "2022-01-01",
+      "Hovers": 1,
+      "Impressions": 10,
+    },
+    Object {
+      "AnalyticsType": "BROADSTREET",
+      "CTR": "10.00%",
+      "Clicks": 1,
+      "Date": "2022-01-02",
+      "Hovers": 1,
+      "Impressions": 10,
+    },
+  ],
+  "CreativeList": Array [
+    Object {
+      "CTR": "10.00%",
+      "Clicks": 1,
+      "CreativeId": 1,
+      "CreativeName": "creative_name 1",
+      "Hovers": 1,
+      "Impressions": 10,
+    },
+    Object {
+      "CTR": "10.00%",
+      "Clicks": 2,
+      "CreativeId": 2,
+      "CreativeName": "creative_name 2",
+      "Hovers": 2,
+      "Impressions": 20,
+    },
+  ],
+  "DayOfWeekImpression": Array [
+    Object {
+      "AnalyticsType": "BROADSTREET",
+      "CTR": "10.00%",
+      "Clicks": 1,
+      "Day": "Saturday",
+      "Hovers": 1,
+      "ImpressionPercent": "50.00%",
+      "Impressions": 10,
+    },
+    Object {
+      "AnalyticsType": "BROADSTREET",
+      "CTR": "10.00%",
+      "Clicks": 1,
+      "Day": "Sunday",
+      "Hovers": 1,
+      "ImpressionPercent": "50.00%",
+      "Impressions": 10,
+    },
+  ],
+  "TabName": "BROADSTREET",
+}
+`;
