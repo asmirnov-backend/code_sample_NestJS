@@ -21,7 +21,7 @@ export class BroadstreetController {
 
     const campaigns = await this.metadata.getCampaigns({
       advertiserId: advertiser!.id,
-      campaignOriginIds: query.campaignIds.map((e) => Number(e)),
+      campaignOriginIds: query.campaignIds.split(',').map((e) => Number(e)),
     });
 
     return this.broadstreet.getBroadstreet({

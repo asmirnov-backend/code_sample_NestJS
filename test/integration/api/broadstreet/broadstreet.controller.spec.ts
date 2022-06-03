@@ -23,7 +23,7 @@ describe('BroadstreetController', () => {
   it('getBroadstreet', async () => {
     const result = await controller.getBroadstreet({
       advertiserId: '1',
-      campaignIds: ['1'],
+      campaignIds: '1',
     });
 
     expect(result).toMatchSnapshot();
