@@ -7,38 +7,6 @@ import { BroadstreetModule } from './broadstreet.module';
 import { BroadstreetPerformanceService } from './broadstreet.performance.service';
 import { BroadstreetService } from './broadstreet.service';
 
-const performanceCommonMock = [
-  {
-    date: DateTime.fromISO('2022-01-01'),
-    impressions: 10,
-    clicks: 1,
-    hovers: 1,
-  },
-  {
-    date: DateTime.fromISO('2022-01-02'),
-    impressions: 100,
-    clicks: 10,
-    hovers: 10,
-  },
-];
-
-const performanceByCreativeMock = [
-  {
-    creativeId: 1,
-    creativeName: 'foo1',
-    impressions: 10,
-    clicks: 1,
-    hovers: 1,
-  },
-  {
-    creativeId: 2,
-    creativeName: 'foo2',
-    impressions: 100,
-    clicks: 10,
-    hovers: 10,
-  },
-];
-
 describe('BroadstreetService', () => {
   let service: BroadstreetService;
   let performanceService: BroadstreetPerformanceService;
@@ -65,10 +33,38 @@ describe('BroadstreetService', () => {
 
     jest
       .spyOn(performanceService, 'getBroadstreetPerformanceCommon')
-      .mockImplementation(async () => performanceCommonMock);
+      .mockImplementation(async () => [
+        {
+          date: DateTime.fromISO('2022-01-01'),
+          impressions: 10,
+          clicks: 1,
+          hovers: 1,
+        },
+        {
+          date: DateTime.fromISO('2022-01-02'),
+          impressions: 100,
+          clicks: 10,
+          hovers: 10,
+        },
+      ]);
     jest
       .spyOn(performanceService, 'getBroadstreetPerformanceByCreatives')
-      .mockImplementation(async () => performanceByCreativeMock);
+      .mockImplementation(async () => [
+        {
+          creativeId: 1,
+          creativeName: 'foo1',
+          impressions: 10,
+          clicks: 1,
+          hovers: 1,
+        },
+        {
+          creativeId: 2,
+          creativeName: 'foo2',
+          impressions: 100,
+          clicks: 10,
+          hovers: 10,
+        },
+      ]);
   });
 
   it('Service should be defined', () => {
