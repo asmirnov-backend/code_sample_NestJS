@@ -1,4 +1,10 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 
 import { MetadataService } from '@api/metadata/metadata.service';
 
@@ -14,6 +20,7 @@ export class BroadstreetController {
   ) {}
 
   @Get('/broadstreet')
+  @UsePipes(new ValidationPipe({ transform: true }))
   async getBroadstreet(
     @Query() query: BroadstreetQueryParamsDto,
   ): Promise<Broadstreet> {
@@ -21,7 +28,7 @@ export class BroadstreetController {
 
     const campaigns = await this.metadata.getCampaigns({
       advertiserId: advertiser!.id,
-      campaignOriginIds: query.campaignIds.split(',').map((e) => Number(e)),
+      campaignOriginIds: query.campaignIds,
     });
 
     return this.broadstreet.getBroadstreet({
