@@ -1,28 +1,31 @@
-import { Controller, Get } from '@nestjs/common';
-import { SpendType, Campaign } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime';
+import { Controller, Get, Query } from '@nestjs/common';
+
+import { MetadataService } from '@api/metadata/metadata.service';
 
 import { BroadstreetService } from './broadstreet.service';
+import { BroadstreetQueryParamsDto } from './dto/broadstreet.params.dto';
 import { Broadstreet } from './interfaces/broadstreet.output.interface';
 
 @Controller()
 export class BroadstreetController {
-  constructor(private readonly broadstreetService: BroadstreetService) {}
+  constructor(
+    private readonly broadstreet: BroadstreetService,
+    private readonly metadata: MetadataService,
+  ) {}
 
   @Get('/broadstreet')
-  async getBroadstreet(): Promise<Broadstreet> {
-    const mockCampaigns = [
-      {
-        originId: 1,
-        contractStart: '2022-01-01',
-        contractEnd: '2022-02-01',
-        spendRate: new Decimal(1.2),
-        spendType: SpendType.CPM,
-      },
-    ] as Campaign[];
+  async getBroadstreet(
+    @Query() query: BroadstreetQueryParamsDto,
+  ): Promise<Broadstreet> {
+    const advertiser = await this.metadata.getAdvertiser(query.advertiserId);
 
-    return this.broadstreetService.getBroadstreet({
-      campaigns: mockCampaigns,
+    const campaigns = await this.metadata.getCampaigns({
+      advertiserId: advertiser!.id,
+      campaignOriginIds: query.campaignIds.map((e) => Number(e)),
+    });
+
+    return this.broadstreet.getBroadstreet({
+      campaigns: campaigns,
     });
   }
 }
