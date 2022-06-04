@@ -9,23 +9,23 @@ datasource db {
 }
 
 model Advertiser {
-  id        BigInt     @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   originId  String     @unique @db.VarChar(255)
   name      String     @db.VarChar(255)
   campaigns Campaign[]
 }
 
 model Campaign {
-  id            BigInt        @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   originId      Int           @unique
   name          String        @db.VarChar(255)
   friendlyName  String        @db.VarChar(255)
   contractStart String?       @db.VarChar(255)
   contractEnd   String?       @db.VarChar(255)
-  spendRate     Decimal       @default(0)
+  spendRate     Float         @default(0)
   spendType     SpendType     @default(Hide)
   type          AnalyticsType
-  advertiserId  BigInt
+  advertiserId  Int
   advertiser    Advertiser    @relation(fields: [advertiserId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_campaign_advertiser")
 
   @@index([advertiserId], map: "FK_campaign_advertiser")
@@ -47,23 +47,23 @@ enum AnalyticsType {
 }
 
 model broadstreet_performance_campaign {
-  campaign_id BigInt
+  campaign_id Int
   date        DateTime @db.Date()
-  views       BigInt?
-  hovers      BigInt?
-  clicks      BigInt?
+  views       Int?
+  hovers      Int?
+  clicks      Int?
 
   @@id([campaign_id, date])
 }
 
 model broadstreet_performance_creatives {
   date          DateTime @db.Date()
-  campaign_id   BigInt
+  campaign_id   Int
   creative_name String   @db.VarChar(255)
-  creative_id   BigInt
-  views         BigInt?
-  hovers        BigInt?
-  clicks        BigInt?
+  creative_id   Int
+  views         Int?
+  hovers        Int?
+  clicks        Int?
 
   @@id([campaign_id, date, creative_id])
 }
