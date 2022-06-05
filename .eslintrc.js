@@ -24,6 +24,26 @@ module.exports = {
     },
   },
   rules: {
+    complexity: [2, 5],
+    eqeqeq: 2,
+    'max-statements-per-line': [
+      2,
+      {
+        max: 1,
+      },
+    ],
+    'max-depth': [
+      2,
+      {
+        max: 2,
+      },
+    ],
+    'max-lines': [2, 200],
+    'no-eval': 2,
+    'no-return-assign': 2,
+    'no-param-reassign': 2,
+    'no-var': 2,
+    'prefer-const': 2,
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
