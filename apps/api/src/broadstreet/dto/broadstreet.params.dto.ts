@@ -3,9 +3,9 @@ import { ArrayNotContains, IsString } from 'class-validator';
 
 export class BroadstreetQueryParamsDto {
   @IsString()
-  advertiserId: string;
+  readonly advertiserId: string;
 
-  @Transform(({ value }) => value.split(',').map((e) => Number(e)))
+  @Transform(({ value }) => value.split(',').map(Number))
   @ArrayNotContains([NaN])
-  campaignIds: number[];
+  readonly campaignIds: number[];
 }

@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import { HttpServer, INestApplication } from '@nestjs/common';
 import { TestingModule, Test } from '@nestjs/testing';
 import { GraphQLFormattedError } from 'graphql';
 import * as request from 'supertest';
@@ -12,7 +12,7 @@ const GRAPHQL_URL = '/graphql';
 describe('AdvertiserResolver', () => {
   let app: TestingModule;
   let nestApp: INestApplication;
-  let server;
+  let server: HttpServer;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({

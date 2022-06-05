@@ -10,6 +10,8 @@ describe('BroadstreetService', () => {
   let service: BroadstreetService;
   let performanceService: BroadstreetPerformanceService;
 
+  const startDate = '2022-01-01';
+  const endDate = '2022-01-02';
   const params = {
     campaigns: [
       {
@@ -34,13 +36,13 @@ describe('BroadstreetService', () => {
       .spyOn(performanceService, 'getBroadstreetPerformanceCommon')
       .mockImplementation(async () => [
         {
-          date: DateTime.fromISO('2022-01-01'),
+          date: DateTime.fromISO(startDate),
           impressions: 10,
           clicks: 1,
           hovers: 1,
         },
         {
-          date: DateTime.fromISO('2022-01-02'),
+          date: DateTime.fromISO(endDate),
           impressions: 100,
           clicks: 10,
           hovers: 10,
@@ -75,7 +77,7 @@ describe('BroadstreetService', () => {
     expect(result).toEqual([
       {
         AnalyticsType: AnalyticsType.BROADSTREET,
-        Date: '2022-01-01',
+        Date: startDate,
         Impressions: 10,
         Clicks: 1,
         Hovers: 1,
@@ -83,7 +85,7 @@ describe('BroadstreetService', () => {
       },
       {
         AnalyticsType: AnalyticsType.BROADSTREET,
-        Date: '2022-01-02',
+        Date: endDate,
         Impressions: 100,
         Clicks: 10,
         Hovers: 10,
@@ -121,8 +123,8 @@ describe('BroadstreetService', () => {
     expect(result).toEqual({
       AnalyticsType: AnalyticsType.BROADSTREET,
       Impressions: 110,
-      StartDate: '2022-01-01',
-      EndDate: '2022-01-02',
+      StartDate: startDate,
+      EndDate: endDate,
       Hovers: 11,
       Clicks: 11,
       CTR: '10.00%',
