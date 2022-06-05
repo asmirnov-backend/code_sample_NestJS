@@ -35,9 +35,9 @@ export class BroadstreetPerformanceService {
 
     return performance.map((e) => ({
       date: DateTime.fromJSDate(e.date),
-      impressions: Number(e._sum?.views),
-      clicks: Number(e._sum?.clicks),
-      hovers: Number(e._sum?.hovers),
+      impressions: e._sum.views ?? 0,
+      clicks: e._sum.clicks ?? 0,
+      hovers: e._sum.hovers ?? 0,
     }));
   }
 
@@ -61,11 +61,11 @@ export class BroadstreetPerformanceService {
       });
 
     return performance.map((e) => ({
-      creativeId: Number(e.creative_id),
+      creativeId: e.creative_id,
       creativeName: e.creative_name,
-      impressions: Number(e._sum.views),
-      clicks: Number(e._sum.clicks),
-      hovers: Number(e._sum.hovers),
+      impressions: e._sum.views ?? 0,
+      clicks: e._sum.clicks ?? 0,
+      hovers: e._sum.hovers ?? 0,
     }));
   }
 }

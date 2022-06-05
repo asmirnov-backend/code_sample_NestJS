@@ -1,0 +1,23 @@
+type Advertiser {
+  id: Int!
+  originId: String!
+  name: String!
+  campaigns: [Campaign]
+}
+
+type Campaign {
+  id: Int!
+  originId: Int!
+  name: String!
+  friendlyName: String!
+  contractStart: String
+  contractEnd: String
+  spendRate: Float!
+  spendType: String!
+  type: String!
+  advertiserId: Int!
+}
+
+type Query {
+  advertiser(originId: String!): Advertiser
+}

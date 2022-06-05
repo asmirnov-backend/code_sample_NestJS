@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Advertiser, Campaign } from '@prisma/client';
 
 import { PrismaService } from '@api/prisma/prisma.service';
 
@@ -6,16 +7,18 @@ import { PrismaService } from '@api/prisma/prisma.service';
 export class MetadataService {
   constructor(private readonly prisma: PrismaService) {}
 
-  public async getAdvertiser(advertiserOriginId: string) {
+  public async getAdvertiser(
+    advertiserOriginId: string,
+  ): Promise<Advertiser | null> {
     return this.prisma.advertiser.findUnique({
       where: { originId: advertiserOriginId },
     });
   }
 
   public async getCampaigns(params: {
-    advertiserId: bigint;
-    campaignOriginIds: number[];
-  }) {
+    advertiserId: number;
+    campaignOriginIds?: number[];
+  }): Promise<Campaign[]> {
     return this.prisma.campaign.findMany({
       where: {
         advertiserId: params.advertiserId,

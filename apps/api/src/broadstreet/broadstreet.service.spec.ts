@@ -1,6 +1,5 @@
 import { Test } from '@nestjs/testing';
 import { AnalyticsType, Campaign, SpendType } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime';
 import { DateTime } from 'luxon';
 
 import { BroadstreetModule } from './broadstreet.module';
@@ -15,7 +14,7 @@ describe('BroadstreetService', () => {
     campaigns: [
       {
         originId: 1,
-        spendRate: new Decimal(1.0),
+        spendRate: 1.0,
         spendType: SpendType.CPM,
       } as Campaign,
     ],

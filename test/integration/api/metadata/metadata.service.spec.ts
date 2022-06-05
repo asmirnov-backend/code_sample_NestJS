@@ -1,7 +1,6 @@
 import { ConfigModule } from '@nestjs/config';
 import { TestingModule, Test } from '@nestjs/testing';
 import { AnalyticsType, SpendType } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime';
 
 import { MetadataService } from '@api/metadata/metadata.service';
 import { PrismaModule } from '@api/prisma/prisma.module';
@@ -27,7 +26,7 @@ describe('MetadataService', () => {
     const result = await service.getAdvertiser('1');
 
     expect(result).toEqual({
-      id: BigInt(1),
+      id: 1,
       name: 'advertiser 1',
       originId: '1',
     });
@@ -35,20 +34,20 @@ describe('MetadataService', () => {
 
   it('getCampaigns', async () => {
     const result = await service.getCampaigns({
-      advertiserId: BigInt(1),
+      advertiserId: 1,
       campaignOriginIds: [1],
     });
 
     expect(result).toEqual([
       {
-        advertiserId: BigInt(1),
+        advertiserId: 1,
         contractEnd: '2022-02-01',
         contractStart: '2022-01-01',
         friendlyName: 'friendlyName',
-        id: BigInt(1),
+        id: 1,
         name: 'name 1',
         originId: 1,
-        spendRate: new Decimal(1.1),
+        spendRate: 1.1,
         spendType: SpendType.CPM,
         type: AnalyticsType.BROADSTREET,
       },
