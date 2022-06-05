@@ -1,8 +1,10 @@
+import { IntervalParam } from '../interfaces/interval.interface';
+
 import { DATE_FORMAT } from '@common/consts/date-format.const';
 import { Daterange } from '@common/consts/daterange.enum';
+
 import { isUndefined } from 'lodash';
 import { DateTime } from 'luxon';
-import { IntervalParam } from '../interfaces/interval.interface';
 
 export const calculateDatesForPerformanceByDay = (
   params: IntervalParam,
