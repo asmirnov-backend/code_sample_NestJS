@@ -1,12 +1,3 @@
-import { Injectable } from '@nestjs/common';
-import { AnalyticsType } from '@prisma/client';
-import { groupBy, map, max, min, sumBy } from 'lodash';
-
-import { DATE_FORMAT } from '@common/consts/date-format.const';
-import { CampaignsWithInterval } from '@common/interfaces/campaign-with-interval.interface';
-import { calcPercentage } from '@common/utils/calc-percentage';
-import { getSpendData } from '@common/utils/get-spend-data';
-
 import { BroadstreetPerformanceService } from './broadstreet.performance.service';
 import {
   Broadstreet,
@@ -15,6 +6,15 @@ import {
   BroadstreetByDate,
   BroadstreetByCreative,
 } from './interfaces/broadstreet.output.interface';
+
+import { DATE_FORMAT } from '@common/consts/date-format.const';
+import { CampaignsWithInterval } from '@common/interfaces/campaign-with-interval.interface';
+import { calcPercentage } from '@common/utils/calc-percentage';
+import { getSpendData } from '@common/utils/get-spend-data';
+
+import { Injectable } from '@nestjs/common';
+import { AnalyticsType } from '@prisma/client';
+import { groupBy, map, max, min, sumBy } from 'lodash';
 
 @Injectable()
 export class BroadstreetService {

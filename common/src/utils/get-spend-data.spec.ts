@@ -1,6 +1,6 @@
-import { SpendType } from '@prisma/client';
-
 import { getSpendData } from './get-spend-data';
+
+import { SpendType } from '@prisma/client';
 
 describe('function getSpendData', () => {
   it('SpendType = Hide', () => {

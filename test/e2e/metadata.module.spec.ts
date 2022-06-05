@@ -1,10 +1,10 @@
+import { AppModule } from '@api/app.module';
+import { Advertiser } from '@api/graphql.schema';
+
 import { HttpServer, INestApplication } from '@nestjs/common';
 import { TestingModule, Test } from '@nestjs/testing';
 import { GraphQLFormattedError } from 'graphql';
 import * as request from 'supertest';
-
-import { AppModule } from '@api/app.module';
-import { Advertiser } from '@api/graphql.schema';
 
 jest.setTimeout(10_000);
 const GRAPHQL_URL = '/graphql';

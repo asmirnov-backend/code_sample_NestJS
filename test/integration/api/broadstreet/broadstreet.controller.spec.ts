@@ -1,8 +1,8 @@
-import { ConfigModule } from '@nestjs/config';
-import { TestingModule, Test } from '@nestjs/testing';
-
 import { BroadstreetController } from '@api/broadstreet/broadstreet.controller';
 import { BroadstreetModule } from '@api/broadstreet/broadstreet.module';
+
+import { ConfigModule } from '@nestjs/config';
+import { TestingModule, Test } from '@nestjs/testing';
 
 describe('BroadstreetController', () => {
   let controller: BroadstreetController;

@@ -25,7 +25,7 @@ module.exports = {
     },
   },
   rules: {
-    complexity: [2, 5],
+    complexity: [1, 12],
     eqeqeq: 2,
     'max-statements-per-line': [
       2,
@@ -55,7 +55,16 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'sibling', 'parent'],
+        groups: [
+          'index',
+          'sibling',
+          'parent',
+          'internal',
+          'external',
+          'builtin',
+          'object',
+          'type',
+        ],
         'newlines-between': 'always',
         pathGroups: [
           {

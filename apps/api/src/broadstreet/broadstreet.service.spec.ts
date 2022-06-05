@@ -1,10 +1,10 @@
-import { Test } from '@nestjs/testing';
-import { AnalyticsType, Campaign, SpendType } from '@prisma/client';
-import { DateTime } from 'luxon';
-
 import { BroadstreetModule } from './broadstreet.module';
 import { BroadstreetPerformanceService } from './broadstreet.performance.service';
 import { BroadstreetService } from './broadstreet.service';
+
+import { Test } from '@nestjs/testing';
+import { AnalyticsType, Campaign, SpendType } from '@prisma/client';
+import { DateTime } from 'luxon';
 
 describe('BroadstreetService', () => {
   let service: BroadstreetService;

@@ -1,8 +1,8 @@
-import { Resolver, Args, Query, ResolveField, Parent } from '@nestjs/graphql';
+import { MetadataService } from './metadata.service';
 
 import { Advertiser, Campaign, IQuery } from '@api/graphql.schema';
 
-import { MetadataService } from './metadata.service';
+import { Resolver, Args, Query, ResolveField, Parent } from '@nestjs/graphql';
 
 @Resolver('Advertiser')
 export class AdvertiserResolver implements IQuery {
