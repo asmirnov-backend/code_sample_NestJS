@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { DateTime } from 'luxon';
+import {
+  BroadstreetPerformance,
+  BroadstreetPerformanceByCreatives,
+} from './interfaces/broadstreet.performance.interface';
 
 import { PrismaService } from '@api/prisma/prisma.service';
 import { PerformanceParams } from '@common/interfaces/performance.params.interface';
 import { calculateDatesForPerformanceByDay } from '@common/utils/calculate-dates';
 
-import {
-  BroadstreetPerformance,
-  BroadstreetPerformanceByCreatives,
-} from './interfaces/broadstreet.performance.interface';
+import { Injectable } from '@nestjs/common';
+import { DateTime } from 'luxon';
 
 @Injectable()
 export class BroadstreetPerformanceService {

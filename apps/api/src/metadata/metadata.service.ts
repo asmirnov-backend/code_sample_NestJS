@@ -1,7 +1,7 @@
+import { PrismaService } from '@api/prisma/prisma.service';
+
 import { Injectable } from '@nestjs/common';
 import { Advertiser, Campaign } from '@prisma/client';
-
-import { PrismaService } from '@api/prisma/prisma.service';
 
 @Injectable()
 export class MetadataService {

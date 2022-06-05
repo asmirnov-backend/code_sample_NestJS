@@ -1,10 +1,10 @@
+import { BroadstreetModule } from '@api/broadstreet/broadstreet.module';
+import { Broadstreet } from '@api/broadstreet/interfaces/broadstreet.output.interface';
+
 import { HttpServer, INestApplication } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TestingModule, Test } from '@nestjs/testing';
 import * as request from 'supertest';
-
-import { BroadstreetModule } from '@api/broadstreet/broadstreet.module';
-import { Broadstreet } from '@api/broadstreet/interfaces/broadstreet.output.interface';
 
 jest.setTimeout(10_000);
 

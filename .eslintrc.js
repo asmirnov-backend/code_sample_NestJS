@@ -55,7 +55,16 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'sibling', 'parent'],
+        groups: [
+          'index',
+          'sibling',
+          'parent',
+          'internal',
+          'external',
+          'builtin',
+          'object',
+          'type',
+        ],
         'newlines-between': 'always',
         pathGroups: [
           {

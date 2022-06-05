@@ -1,7 +1,3 @@
-import { ConfigModule } from '@nestjs/config';
-import { TestingModule, Test } from '@nestjs/testing';
-import { AnalyticsType } from '@prisma/client';
-
 import { BroadstreetPerformanceService } from '@api/broadstreet/broadstreet.performance.service';
 import { BroadstreetService } from '@api/broadstreet/broadstreet.service';
 import {
@@ -14,6 +10,10 @@ import {
 import { PrismaModule } from '@api/prisma/prisma.module';
 import { PrismaService } from '@api/prisma/prisma.service';
 import { CampaignsWithInterval } from '@common/interfaces/campaign-with-interval.interface';
+
+import { ConfigModule } from '@nestjs/config';
+import { TestingModule, Test } from '@nestjs/testing';
+import { AnalyticsType } from '@prisma/client';
 
 describe('BroadstreetService', () => {
   let service: BroadstreetService;

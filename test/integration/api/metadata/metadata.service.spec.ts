@@ -1,9 +1,9 @@
+import { MetadataService } from '@api/metadata/metadata.service';
+import { PrismaModule } from '@api/prisma/prisma.module';
+
 import { ConfigModule } from '@nestjs/config';
 import { TestingModule, Test } from '@nestjs/testing';
 import { AnalyticsType, SpendType } from '@prisma/client';
-
-import { MetadataService } from '@api/metadata/metadata.service';
-import { PrismaModule } from '@api/prisma/prisma.module';
 
 describe('MetadataService', () => {
   let service: MetadataService;
