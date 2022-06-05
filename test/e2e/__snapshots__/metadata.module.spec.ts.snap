@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvertiserResolver AdvertiserResolver 1`] = `
+Object {
+  "advertiser": Object {
+    "campaigns": Array [
+      Object {
+        "name": "name 1",
+      },
+    ],
+    "id": 1,
+    "name": "advertiser 1",
+  },
+}
+`;
