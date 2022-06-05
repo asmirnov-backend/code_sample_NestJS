@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
-
 import { advertisersSeed } from './seed-data/advertisers';
 import { performanceCampaignsSeed } from './seed-data/broadstreet-performance-campaign';
 import { performanceCreativesSeed } from './seed-data/broadstreet-performance-creatives';
 import { campaignsSeed } from './seed-data/campaigns';
+
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
