@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import { HttpServer, INestApplication } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TestingModule, Test } from '@nestjs/testing';
 import * as request from 'supertest';
@@ -11,7 +11,7 @@ jest.setTimeout(10_000);
 describe('BroadstreetModule', () => {
   let app: TestingModule;
   let nestApp: INestApplication;
-  let server;
+  let server: HttpServer;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
