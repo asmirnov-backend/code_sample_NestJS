@@ -6,8 +6,10 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { isNull } from 'lodash';
 
 import { LoggingRequestInterceptor } from '@api/logging-request.interceptor';
+import { AdvertiserNotFoundException } from '@api/metadata/exceptions/advertiser-not-found.exception';
 import { MetadataService } from '@api/metadata/metadata.service';
 
 import { BroadstreetService } from './broadstreet.service';
@@ -28,6 +30,10 @@ export class BroadstreetController {
     @Query() query: BroadstreetQueryParamsDto,
   ): Promise<Broadstreet> {
     const advertiser = await this.metadata.getAdvertiser(query.advertiserId);
+
+    if (isNull(advertiser)) {
+      throw new AdvertiserNotFoundException(query.advertiserId);
+    }
 
     const campaigns = await this.metadata.getCampaigns({
       advertiserId: advertiser.id,

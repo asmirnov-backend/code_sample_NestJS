@@ -9,7 +9,9 @@ export class AdvertiserResolver implements IQuery {
   constructor(private metadata: MetadataService) {}
 
   @Query()
-  async advertiser(@Args('originId') originId: string): Promise<Advertiser> {
+  async advertiser(
+    @Args('originId') originId: string,
+  ): Promise<Advertiser | null> {
     return this.metadata.getAdvertiser(originId);
   }
 

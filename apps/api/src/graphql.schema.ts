@@ -28,7 +28,7 @@ export interface Campaign {
 }
 
 export interface IQuery {
-    advertiser(originId: string): Advertiser | Promise<Advertiser>;
+    advertiser(originId: string): Nullable<Advertiser> | Promise<Nullable<Advertiser>>;
 }
 
 type Nullable<T> = T | null;

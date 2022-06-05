@@ -19,5 +19,5 @@ type Campaign {
 }
 
 type Query {
-  advertiser(originId: String!): Advertiser!
+  advertiser(originId: String!): Advertiser
 }
